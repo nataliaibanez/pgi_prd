@@ -1,0 +1,41 @@
+{
+	"name": "sql_status",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "pgiprd",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Delv Time Window",
+				"type": "varchar"
+			},
+			{
+				"name": "Delivery Nbr",
+				"type": "varchar"
+			},
+			{
+				"name": "Delv Item",
+				"type": "varchar"
+			},
+			{
+				"name": "Status",
+				"type": "varchar"
+			},
+			{
+				"name": "Code",
+				"type": "varchar"
+			},
+			{
+				"name": "Original Date",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "delivery_status"
+		}
+	}
+}

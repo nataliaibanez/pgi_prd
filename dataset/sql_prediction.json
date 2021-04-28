@@ -1,0 +1,30 @@
+{
+	"name": "sql_prediction",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "pgiprd",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "delivery",
+				"type": "varchar"
+			},
+			{
+				"name": "item",
+				"type": "varchar"
+			},
+			{
+				"name": "fail",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "predictions"
+		}
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"name": "update_order_status",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "update_yms",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 1,
+				"startTime": "2021-04-29T17:00:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

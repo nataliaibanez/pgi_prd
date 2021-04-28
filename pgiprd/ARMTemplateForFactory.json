@@ -1097,6 +1097,36 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/prediction')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/update_order_status')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "update_yms",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Hour",
+						"interval": 1,
+						"startTime": "2021-04-29T17:00:00Z",
+						"timeZone": "UTC"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/update_yms')]"
+			]
 		}
 	]
 }

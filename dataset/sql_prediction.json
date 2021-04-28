@@ -9,7 +9,7 @@
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "delivery",
+				"name": "delivery_n",
 				"type": "varchar"
 			},
 			{

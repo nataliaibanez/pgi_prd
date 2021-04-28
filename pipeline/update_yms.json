@@ -25,7 +25,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "delete from delivery_status;",
+						"preCopyScript": "delete from delivery_status2;",
 						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
@@ -51,7 +51,7 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "Delivery Nbr",
+									"name": "delivery_num",
 									"type": "String",
 									"physicalType": "varchar"
 								}

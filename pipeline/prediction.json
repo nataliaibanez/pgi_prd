@@ -39,7 +39,7 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "delivery",
+									"name": "delivery_n",
 									"type": "String",
 									"physicalType": "varchar"
 								}

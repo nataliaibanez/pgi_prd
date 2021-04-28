@@ -13,7 +13,7 @@
 				"type": "varchar"
 			},
 			{
-				"name": "Delivery Nbr",
+				"name": "delivery_num",
 				"type": "varchar"
 			},
 			{

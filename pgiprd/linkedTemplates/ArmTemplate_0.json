@@ -159,7 +159,7 @@
 				],
 				"typeProperties": {
 					"schema": "dbo",
-					"table": "delivery_status"
+					"table": "delivery_status2"
 				}
 			},
 			"dependsOn": [

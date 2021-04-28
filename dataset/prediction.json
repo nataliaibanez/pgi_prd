@@ -1,0 +1,34 @@
+{
+	"name": "prediction",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "pgi_process",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "prediccion",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "prediccion.xlsx",
+				"container": "prediction"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "delivery",
+				"type": "String"
+			},
+			{
+				"name": "delivery_item",
+				"type": "String"
+			},
+			{
+				"name": "fail",
+				"type": "String"
+			}
+		]
+	}
+}

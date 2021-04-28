@@ -1,0 +1,424 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "pgiprd"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/prediction')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "pgi_process",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "prediccion",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "prediccion.xlsx",
+						"container": "prediction"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "delivery",
+						"type": "String"
+					},
+					{
+						"name": "delivery_item",
+						"type": "String"
+					},
+					{
+						"name": "fail",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/sql_prediction')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "pgiprd",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "delivery",
+						"type": "varchar"
+					},
+					{
+						"name": "item",
+						"type": "varchar"
+					},
+					{
+						"name": "fail",
+						"type": "float",
+						"precision": 15
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "predictions"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/sql_status')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "pgiprd",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "Delv Time Window",
+						"type": "varchar"
+					},
+					{
+						"name": "Delivery Nbr",
+						"type": "varchar"
+					},
+					{
+						"name": "Delv Item",
+						"type": "varchar"
+					},
+					{
+						"name": "Status",
+						"type": "varchar"
+					},
+					{
+						"name": "Code",
+						"type": "varchar"
+					},
+					{
+						"name": "Original Date",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "delivery_status"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/sql_yms')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "pgiprd",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "plant",
+						"type": "varchar"
+					},
+					{
+						"name": "delivery",
+						"type": "varchar"
+					},
+					{
+						"name": "delivery type",
+						"type": "varchar"
+					},
+					{
+						"name": "product",
+						"type": "varchar"
+					},
+					{
+						"name": "del qty",
+						"type": "varchar"
+					},
+					{
+						"name": "original qty",
+						"type": "varchar"
+					},
+					{
+						"name": "plan GM Date",
+						"type": "varchar"
+					},
+					{
+						"name": "shipment",
+						"type": "varchar"
+					},
+					{
+						"name": "shipping condition",
+						"type": "varchar"
+					},
+					{
+						"name": "batch",
+						"type": "varchar"
+					},
+					{
+						"name": "driver Name",
+						"type": "varchar"
+					},
+					{
+						"name": "customer Name",
+						"type": "varchar"
+					},
+					{
+						"name": "customer",
+						"type": "varchar"
+					},
+					{
+						"name": "trailer type",
+						"type": "varchar"
+					},
+					{
+						"name": "trailer size",
+						"type": "varchar"
+					},
+					{
+						"name": "transport name",
+						"type": "varchar"
+					},
+					{
+						"name": "appointment",
+						"type": "varchar"
+					},
+					{
+						"name": "checkIn",
+						"type": "varchar"
+					},
+					{
+						"name": "load start",
+						"type": "varchar"
+					},
+					{
+						"name": "load end",
+						"type": "varchar"
+					},
+					{
+						"name": "checkout",
+						"type": "varchar"
+					},
+					{
+						"name": "rejection",
+						"type": "varchar"
+					},
+					{
+						"name": "checkin from",
+						"type": "varchar"
+					},
+					{
+						"name": "checkout from",
+						"type": "varchar"
+					},
+					{
+						"name": "idoc number",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "yms"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/status')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "pgi_process",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Sheet1",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "status.XLSX",
+						"container": "status"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "Delv Time Window",
+						"type": "String"
+					},
+					{
+						"name": "Delivery Nbr",
+						"type": "String"
+					},
+					{
+						"name": "Delv Item",
+						"type": "String"
+					},
+					{
+						"name": "Goods Mvmnt Status",
+						"type": "String"
+					},
+					{
+						"name": "Delivery Change Code",
+						"type": "String"
+					},
+					{
+						"name": "Original Date",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/yms')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "pgi_process",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Sheet1",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "zfde_history.XLSX",
+						"container": "yms"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "Plant",
+						"type": "String"
+					},
+					{
+						"name": "Document ID",
+						"type": "String"
+					},
+					{
+						"name": "Delivery Type",
+						"type": "String"
+					},
+					{
+						"name": "Product Code",
+						"type": "String"
+					},
+					{
+						"name": "Delivery quantity",
+						"type": "String"
+					},
+					{
+						"name": "Original Quantity",
+						"type": "String"
+					},
+					{
+						"name": "Pland Gds Mvmnt Date",
+						"type": "String"
+					},
+					{
+						"name": "Shipment Number",
+						"type": "String"
+					},
+					{
+						"name": "Shipping Conditions",
+						"type": "String"
+					},
+					{
+						"name": "Batch",
+						"type": "String"
+					},
+					{
+						"name": "Driver Name",
+						"type": "String"
+					},
+					{
+						"name": "Customer Name",
+						"type": "String"
+					},
+					{
+						"name": "Customer",
+						"type": "String"
+					},
+					{
+						"name": "Trailer Type",
+						"type": "String"
+					},
+					{
+						"name": "Trailer Size",
+						"type": "String"
+					},
+					{
+						"name": "Transport Name",
+						"type": "String"
+					},
+					{
+						"name": "Appointment Time Stamp",
+						"type": "String"
+					},
+					{
+						"name": "CheckIn Time Stamp",
+						"type": "String"
+					},
+					{
+						"name": "Load/Unload Start Time Stamp",
+						"type": "String"
+					},
+					{
+						"name": "Load/Unload End Time Stamp",
+						"type": "String"
+					},
+					{
+						"name": "CHECKOUT TIME",
+						"type": "String"
+					},
+					{
+						"name": "Rejection Timestamp",
+						"type": "String"
+					},
+					{
+						"name": "Check-in From",
+						"type": "String"
+					},
+					{
+						"name": "Check-out From",
+						"type": "String"
+					},
+					{
+						"name": "IDoc Number",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		}
+	]
+}

@@ -98,7 +98,7 @@
 				"type": "AzureSqlTable",
 				"schema": [
 					{
-						"name": "delivery",
+						"name": "delivery_n",
 						"type": "varchar"
 					},
 					{
@@ -137,7 +137,7 @@
 						"type": "varchar"
 					},
 					{
-						"name": "Delivery Nbr",
+						"name": "delivery_num",
 						"type": "varchar"
 					},
 					{
@@ -509,7 +509,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "delivery",
+											"name": "delivery_n",
 											"type": "String",
 											"physicalType": "varchar"
 										}
@@ -598,7 +598,7 @@
 							},
 							"sink": {
 								"type": "AzureSqlSink",
-								"preCopyScript": "delete from delivery_status;",
+								"preCopyScript": "delete from delivery_status2;",
 								"disableMetricsCollection": false
 							},
 							"enableStaging": false,
@@ -624,7 +624,7 @@
 											"physicalType": "String"
 										},
 										"sink": {
-											"name": "Delivery Nbr",
+											"name": "delivery_num",
 											"type": "String",
 											"physicalType": "varchar"
 										}

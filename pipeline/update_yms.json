@@ -34,7 +34,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Sales Order",
+									"name": " Sales Order",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -82,7 +82,7 @@
 							},
 							{
 								"source": {
-									"name": "Material",
+									"name": "Material  ",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -154,7 +154,7 @@
 							},
 							{
 								"source": {
-									"name": "Order Quantity",
+									"name": " Order Quantity",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -166,7 +166,7 @@
 							},
 							{
 								"source": {
-									"name": "Delv Date",
+									"name": "Delv Date ",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -214,7 +214,7 @@
 							},
 							{
 								"source": {
-									"name": "Delv Ship-To Name",
+									"name": "Delv Ship-To Name                  ",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -274,7 +274,7 @@
 							},
 							{
 								"source": {
-									"name": "Shpt Haulier Name",
+									"name": "Shpt Haulier Name                  ",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -385,7 +385,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Document ID",
+									"name": "Doc ID    ",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -397,7 +397,7 @@
 							},
 							{
 								"source": {
-									"name": "Trailer Type",
+									"name": "Trailer  ",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -409,7 +409,7 @@
 							},
 							{
 								"source": {
-									"name": "Appointment Time Stamp",
+									"name": "          Appt Time",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -421,7 +421,7 @@
 							},
 							{
 								"source": {
-									"name": "CheckIn Time Stamp",
+									"name": "         CheckIn TS",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -433,7 +433,7 @@
 							},
 							{
 								"source": {
-									"name": "Load/Unload Start Time Stamp",
+									"name": "         Load Start",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -445,7 +445,7 @@
 							},
 							{
 								"source": {
-									"name": "Load/Unload End Time Stamp",
+									"name": "           Load End",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -457,7 +457,7 @@
 							},
 							{
 								"source": {
-									"name": "CHECKOUT TIME",
+									"name": "      CHECKOUT TIME",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -469,7 +469,7 @@
 							},
 							{
 								"source": {
-									"name": "Rejection Timestamp",
+									"name": "               Rejc",
 									"type": "String",
 									"physicalType": "String"
 								},

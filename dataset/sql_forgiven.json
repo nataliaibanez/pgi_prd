@@ -1,0 +1,25 @@
+{
+	"name": "sql_forgiven",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "pgiprd",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "customer",
+				"type": "varchar"
+			},
+			{
+				"name": "forgiven",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "forgiven"
+		}
+	}
+}

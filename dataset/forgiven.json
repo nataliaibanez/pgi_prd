@@ -1,0 +1,30 @@
+{
+	"name": "forgiven",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "pgi_process",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Sheet1",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "forgiven.xlsx",
+				"container": "forgiven"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "Customer",
+				"type": "String"
+			},
+			{
+				"name": "Forgiven",
+				"type": "String"
+			}
+		]
+	}
+}

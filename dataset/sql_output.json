@@ -1,0 +1,170 @@
+{
+	"name": "sql_output",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "pgiprd",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "sales_order",
+				"type": "varchar"
+			},
+			{
+				"name": "delivery",
+				"type": "varchar"
+			},
+			{
+				"name": "delivery_item",
+				"type": "varchar"
+			},
+			{
+				"name": "shipment",
+				"type": "varchar"
+			},
+			{
+				"name": "material",
+				"type": "varchar"
+			},
+			{
+				"name": "delvery_batch",
+				"type": "varchar"
+			},
+			{
+				"name": "actual_gi_date",
+				"type": "varchar"
+			},
+			{
+				"name": "plant",
+				"type": "varchar"
+			},
+			{
+				"name": "status",
+				"type": "varchar"
+			},
+			{
+				"name": "actual_qty",
+				"type": "varchar"
+			},
+			{
+				"name": "order_qty",
+				"type": "varchar"
+			},
+			{
+				"name": "delivery_date",
+				"type": "varchar"
+			},
+			{
+				"name": "shipping_condition",
+				"type": "varchar"
+			},
+			{
+				"name": "delvery_type",
+				"type": "varchar"
+			},
+			{
+				"name": "delivery_ship_to",
+				"type": "varchar"
+			},
+			{
+				"name": "delivery_ship_to_name",
+				"type": "varchar"
+			},
+			{
+				"name": "delivery_ship_to_country",
+				"type": "varchar"
+			},
+			{
+				"name": "delivery_ship_to_postal_code",
+				"type": "varchar"
+			},
+			{
+				"name": "planned_gi_date",
+				"type": "varchar"
+			},
+			{
+				"name": "actual_delivery_date",
+				"type": "varchar"
+			},
+			{
+				"name": "haulier_name",
+				"type": "varchar"
+			},
+			{
+				"name": "delivery_block",
+				"type": "varchar"
+			},
+			{
+				"name": "delivery_change_code",
+				"type": "varchar"
+			},
+			{
+				"name": "delivery_window",
+				"type": "varchar"
+			},
+			{
+				"name": "original_date",
+				"type": "varchar"
+			},
+			{
+				"name": "delivery_n",
+				"type": "varchar"
+			},
+			{
+				"name": "item",
+				"type": "varchar"
+			},
+			{
+				"name": "fail",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "delivery_num",
+				"type": "varchar"
+			},
+			{
+				"name": "trailer_type",
+				"type": "varchar"
+			},
+			{
+				"name": "appointment_ts",
+				"type": "varchar"
+			},
+			{
+				"name": "checkin_ts",
+				"type": "varchar"
+			},
+			{
+				"name": "load_start_ts",
+				"type": "varchar"
+			},
+			{
+				"name": "load_end_ts",
+				"type": "varchar"
+			},
+			{
+				"name": "checkout_ts",
+				"type": "varchar"
+			},
+			{
+				"name": "rejection_ts",
+				"type": "varchar"
+			},
+			{
+				"name": "customer",
+				"type": "varchar"
+			},
+			{
+				"name": "forgiven",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "pgi_output"
+		}
+	}
+}

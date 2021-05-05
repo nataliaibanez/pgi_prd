@@ -174,6 +174,41 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/forgiven')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "pgi_process",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Sheet1",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "forgiven.xlsx",
+						"container": "forgiven"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "Customer",
+						"type": "String"
+					},
+					{
+						"name": "Forgiven",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/pgi_process')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/prediction')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -185,7 +220,7 @@
 				"annotations": [],
 				"type": "Excel",
 				"typeProperties": {
-					"sheetName": "prediccion",
+					"sheetName": "Sheet1",
 					"location": {
 						"type": "AzureBlobStorageLocation",
 						"fileName": "prediccion.xlsx",
@@ -210,6 +245,36 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/pgi_process')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/sql_forgiven')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "pgiprd",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "customer",
+						"type": "varchar"
+					},
+					{
+						"name": "forgiven",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "forgiven"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/pgiprd')]"
 			]
 		},
 		{
@@ -534,6 +599,97 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/forgiven')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "forgiven",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "ExcelSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "delete from forgiven;",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "Customer",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "customer",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Forgiven",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "forgiven",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "forgiven",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "sql_forgiven",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/forgiven')]",
+				"[concat(variables('factoryId'), '/datasets/sql_forgiven')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/prediction')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -571,7 +727,7 @@
 								"mappings": [
 									{
 										"source": {
-											"name": "delivery",
+											"name": "Delivery Nbr",
 											"type": "String",
 											"physicalType": "String"
 										},
@@ -583,7 +739,7 @@
 									},
 									{
 										"source": {
-											"name": "delivery_item",
+											"name": "Delv Item",
 											"type": "String",
 											"physicalType": "String"
 										},
@@ -595,7 +751,7 @@
 									},
 									{
 										"source": {
-											"name": "fail",
+											"name": "Fail",
 											"type": "String",
 											"physicalType": "String"
 										},
@@ -1178,6 +1334,9 @@
 						"startTime": "2021-04-29T05:00:00Z",
 						"timeZone": "UTC",
 						"schedule": {
+							"minutes": [
+								30
+							],
 							"hours": [
 								5
 							]

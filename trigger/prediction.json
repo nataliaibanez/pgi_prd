@@ -19,6 +19,9 @@
 				"startTime": "2021-04-29T05:00:00Z",
 				"timeZone": "UTC",
 				"schedule": {
+					"minutes": [
+						30
+					],
 					"hours": [
 						5
 					]

@@ -34,7 +34,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "delivery",
+									"name": "Delivery Nbr",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -46,7 +46,7 @@
 							},
 							{
 								"source": {
-									"name": "delivery_item",
+									"name": "Delv Item",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -58,7 +58,7 @@
 							},
 							{
 								"source": {
-									"name": "fail",
+									"name": "Fail",
 									"type": "String",
 									"physicalType": "String"
 								},

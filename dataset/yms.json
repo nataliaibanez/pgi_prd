@@ -11,74 +11,18 @@
 			"sheetName": "Sheet1",
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "zfde_history.XLSX",
+				"fileName": "zfde_history2.XLSX",
 				"container": "yms"
 			},
 			"firstRowAsHeader": true
 		},
 		"schema": [
 			{
-				"name": "Plant",
-				"type": "String"
-			},
-			{
 				"name": "Document ID",
 				"type": "String"
 			},
 			{
-				"name": "Delivery Type",
-				"type": "String"
-			},
-			{
-				"name": "Product Code",
-				"type": "String"
-			},
-			{
-				"name": "Delivery quantity",
-				"type": "String"
-			},
-			{
-				"name": "Original Quantity",
-				"type": "String"
-			},
-			{
-				"name": "Pland Gds Mvmnt Date",
-				"type": "String"
-			},
-			{
-				"name": "Shipment Number",
-				"type": "String"
-			},
-			{
-				"name": "Shipping Conditions",
-				"type": "String"
-			},
-			{
-				"name": "Batch",
-				"type": "String"
-			},
-			{
-				"name": "Driver Name",
-				"type": "String"
-			},
-			{
-				"name": "Customer Name",
-				"type": "String"
-			},
-			{
-				"name": "Customer",
-				"type": "String"
-			},
-			{
 				"name": "Trailer Type",
-				"type": "String"
-			},
-			{
-				"name": "Trailer Size",
-				"type": "String"
-			},
-			{
-				"name": "Transport Name",
 				"type": "String"
 			},
 			{
@@ -103,18 +47,6 @@
 			},
 			{
 				"name": "Rejection Timestamp",
-				"type": "String"
-			},
-			{
-				"name": "Check-in From",
-				"type": "String"
-			},
-			{
-				"name": "Check-out From",
-				"type": "String"
-			},
-			{
-				"name": "IDoc Number",
 				"type": "String"
 			}
 		]

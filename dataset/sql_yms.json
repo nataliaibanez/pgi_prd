@@ -9,109 +9,41 @@
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "plant",
+				"name": "delivery_num",
 				"type": "varchar"
 			},
 			{
-				"name": "delivery",
+				"name": "trailer_type",
 				"type": "varchar"
 			},
 			{
-				"name": "delivery type",
+				"name": "appointment_ts",
 				"type": "varchar"
 			},
 			{
-				"name": "product",
+				"name": "checkin_ts",
 				"type": "varchar"
 			},
 			{
-				"name": "del qty",
+				"name": "load_start_ts",
 				"type": "varchar"
 			},
 			{
-				"name": "original qty",
+				"name": "load_end_ts",
 				"type": "varchar"
 			},
 			{
-				"name": "plan GM Date",
+				"name": "checkout_ts",
 				"type": "varchar"
 			},
 			{
-				"name": "shipment",
-				"type": "varchar"
-			},
-			{
-				"name": "shipping condition",
-				"type": "varchar"
-			},
-			{
-				"name": "batch",
-				"type": "varchar"
-			},
-			{
-				"name": "driver Name",
-				"type": "varchar"
-			},
-			{
-				"name": "customer Name",
-				"type": "varchar"
-			},
-			{
-				"name": "customer",
-				"type": "varchar"
-			},
-			{
-				"name": "trailer type",
-				"type": "varchar"
-			},
-			{
-				"name": "trailer size",
-				"type": "varchar"
-			},
-			{
-				"name": "transport name",
-				"type": "varchar"
-			},
-			{
-				"name": "appointment",
-				"type": "varchar"
-			},
-			{
-				"name": "checkIn",
-				"type": "varchar"
-			},
-			{
-				"name": "load start",
-				"type": "varchar"
-			},
-			{
-				"name": "load end",
-				"type": "varchar"
-			},
-			{
-				"name": "checkout",
-				"type": "varchar"
-			},
-			{
-				"name": "rejection",
-				"type": "varchar"
-			},
-			{
-				"name": "checkin from",
-				"type": "varchar"
-			},
-			{
-				"name": "checkout from",
-				"type": "varchar"
-			},
-			{
-				"name": "idoc number",
+				"name": "rejection_ts",
 				"type": "varchar"
 			}
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "yms"
+			"table": "zfde_history"
 		}
 	}
 }

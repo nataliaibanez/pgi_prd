@@ -376,7 +376,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"preCopyScript": "delete from yms;",
+						"preCopyScript": "delete from zfde_history;",
 						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
@@ -385,156 +385,12 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Plant",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "plant",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
 									"name": "Document ID",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "delivery",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Delivery Type",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "delivery type",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Product Code",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "product",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Delivery quantity",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "del qty",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Original Quantity",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "original qty",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Pland Gds Mvmnt Date",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "plan GM Date",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Shipment Number",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "shipment",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Shipping Conditions",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "shipping condition",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Batch",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "batch",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Driver Name",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "driver Name",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Customer Name",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "customer Name",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Customer",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "customer",
+									"name": "delivery_num",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -546,31 +402,7 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "trailer type",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Trailer Size",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "trailer size",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Transport Name",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "transport name",
+									"name": "trailer_type",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -582,7 +414,7 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "appointment",
+									"name": "appointment_ts",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -594,7 +426,7 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "checkIn",
+									"name": "checkin_ts",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -606,7 +438,7 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "load start",
+									"name": "load_start_ts",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -618,7 +450,7 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "load end",
+									"name": "load_end_ts",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -630,7 +462,7 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "checkout",
+									"name": "checkout_ts",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -642,43 +474,7 @@
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "rejection",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Check-in From",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "checkin from",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Check-out From",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "checkout from",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "IDoc Number",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "idoc number",
+									"name": "rejection_ts",
 									"type": "String",
 									"physicalType": "varchar"
 								}

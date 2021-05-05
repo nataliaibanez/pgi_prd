@@ -1,0 +1,525 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "pgiprd"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/update_yms')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "update_status",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "ExcelSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "delete from delivery_status3;",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": " Sales Order",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "sales_order",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Delivery Nbr",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "delivery",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Delv Item",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "delivery_item",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Shipment Nbr",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "shipment",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Material  ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "material",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Delv Batch",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "delvery_batch",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Actual GI Date",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "actual_gi_date",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Plant",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "plant",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Goods Mvmnt Status",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "status",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Actual Quantity",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "actual_qty",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": " Order Quantity",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "order_qty",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Delv Date ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "delivery_date",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Shpg Conds",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "shipping_condition",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Delv Type",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "delvery_type",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Delv Ship-To Party",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "delivery_ship_to",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Delv Ship-To Name                  ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "delivery_ship_to_name",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Delv Ship-To Country",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "delivery_ship_to_country",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Delv Ship-To Postal Code",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "delivery_ship_to_postal_code",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Planned GI Date",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "planned_gi_date",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Actual Delivery Date",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "actual_delivery_date",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Shpt Haulier Name                  ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "haulier_name",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Del Block",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "delivery_block",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Delivery Change Code",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "delivery_change_code",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Delv Time Window",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "delivery_window",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Original Date",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "original_date",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "delivery_status",
+								"type": "DatasetReference"
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "sql_status",
+								"type": "DatasetReference"
+							}
+						]
+					},
+					{
+						"name": "update_yms",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "ExcelSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "delete from zfde_history;",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "Doc ID    ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "delivery_num",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "Trailer  ",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "trailer_type",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "          Appt Time",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "appointment_ts",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "         CheckIn TS",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "checkin_ts",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "         Load Start",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "load_start_ts",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "           Load End",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "load_end_ts",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "      CHECKOUT TIME",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "checkout_ts",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "               Rejc",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "rejection_ts",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "yms",
+								"type": "DatasetReference"
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "sql_yms",
+								"type": "DatasetReference"
+							}
+						]
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": []
+		}
+	]
+}

@@ -778,7 +778,7 @@
 								"mappings": [
 									{
 										"source": {
-											"name": "Sales Order",
+											"name": " Sales Order",
 											"type": "String",
 											"physicalType": "String"
 										},
@@ -826,7 +826,7 @@
 									},
 									{
 										"source": {
-											"name": "Material",
+											"name": "Material  ",
 											"type": "String",
 											"physicalType": "String"
 										},
@@ -898,7 +898,7 @@
 									},
 									{
 										"source": {
-											"name": "Order Quantity",
+											"name": " Order Quantity",
 											"type": "String",
 											"physicalType": "String"
 										},
@@ -910,7 +910,7 @@
 									},
 									{
 										"source": {
-											"name": "Delv Date",
+											"name": "Delv Date ",
 											"type": "String",
 											"physicalType": "String"
 										},
@@ -958,7 +958,7 @@
 									},
 									{
 										"source": {
-											"name": "Delv Ship-To Name",
+											"name": "Delv Ship-To Name                  ",
 											"type": "String",
 											"physicalType": "String"
 										},
@@ -1018,7 +1018,7 @@
 									},
 									{
 										"source": {
-											"name": "Shpt Haulier Name",
+											"name": "Shpt Haulier Name                  ",
 											"type": "String",
 											"physicalType": "String"
 										},
@@ -1131,7 +1131,7 @@
 								"mappings": [
 									{
 										"source": {
-											"name": "Document ID",
+											"name": "Doc ID    ",
 											"type": "String",
 											"physicalType": "String"
 										},
@@ -1143,7 +1143,7 @@
 									},
 									{
 										"source": {
-											"name": "Trailer Type",
+											"name": "Trailer  ",
 											"type": "String",
 											"physicalType": "String"
 										},
@@ -1155,7 +1155,7 @@
 									},
 									{
 										"source": {
-											"name": "Appointment Time Stamp",
+											"name": "          Appt Time",
 											"type": "String",
 											"physicalType": "String"
 										},
@@ -1167,7 +1167,7 @@
 									},
 									{
 										"source": {
-											"name": "CheckIn Time Stamp",
+											"name": "         CheckIn TS",
 											"type": "String",
 											"physicalType": "String"
 										},
@@ -1179,7 +1179,7 @@
 									},
 									{
 										"source": {
-											"name": "Load/Unload Start Time Stamp",
+											"name": "         Load Start",
 											"type": "String",
 											"physicalType": "String"
 										},
@@ -1191,7 +1191,7 @@
 									},
 									{
 										"source": {
-											"name": "Load/Unload End Time Stamp",
+											"name": "           Load End",
 											"type": "String",
 											"physicalType": "String"
 										},
@@ -1203,7 +1203,7 @@
 									},
 									{
 										"source": {
-											"name": "CHECKOUT TIME",
+											"name": "      CHECKOUT TIME",
 											"type": "String",
 											"physicalType": "String"
 										},
@@ -1215,7 +1215,7 @@
 									},
 									{
 										"source": {
-											"name": "Rejection Timestamp",
+											"name": "               Rejc",
 											"type": "String",
 											"physicalType": "String"
 										},
@@ -1900,57 +1900,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/pgiprd')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/status')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "pgi_process",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Excel",
-				"typeProperties": {
-					"sheetName": "Sheet1",
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "status.XLSX",
-						"container": "status"
-					},
-					"firstRowAsHeader": true
-				},
-				"schema": [
-					{
-						"name": "Delv Time Window",
-						"type": "String"
-					},
-					{
-						"name": "Delivery Nbr",
-						"type": "String"
-					},
-					{
-						"name": "Delv Item",
-						"type": "String"
-					},
-					{
-						"name": "Goods Mvmnt Status",
-						"type": "String"
-					},
-					{
-						"name": "Delivery Change Code",
-						"type": "String"
-					},
-					{
-						"name": "Original Date",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/pgi_process')]"
 			]
 		},
 		{

@@ -632,14 +632,14 @@
 					"sheetName": "Sheet1",
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "status.XLSX",
+						"fileName": "status2.XLSX",
 						"container": "status"
 					},
 					"firstRowAsHeader": true
 				},
 				"schema": [
 					{
-						"name": "Delv Time Window",
+						"name": "Sales Order",
 						"type": "String"
 					},
 					{
@@ -651,11 +651,87 @@
 						"type": "String"
 					},
 					{
+						"name": "Shipment Nbr",
+						"type": "String"
+					},
+					{
+						"name": "Material",
+						"type": "String"
+					},
+					{
+						"name": "Delv Batch",
+						"type": "String"
+					},
+					{
+						"name": "Actual GI Date",
+						"type": "String"
+					},
+					{
+						"name": "Plant",
+						"type": "String"
+					},
+					{
 						"name": "Goods Mvmnt Status",
 						"type": "String"
 					},
 					{
+						"name": "Actual Quantity",
+						"type": "String"
+					},
+					{
+						"name": "Order Quantity",
+						"type": "String"
+					},
+					{
+						"name": "Delv Date",
+						"type": "String"
+					},
+					{
+						"name": "Shpg Conds",
+						"type": "String"
+					},
+					{
+						"name": "Delv Type",
+						"type": "String"
+					},
+					{
+						"name": "Delv Ship-To Party",
+						"type": "String"
+					},
+					{
+						"name": "Delv Ship-To Name",
+						"type": "String"
+					},
+					{
+						"name": "Delv Ship-To Country",
+						"type": "String"
+					},
+					{
+						"name": "Delv Ship-To Postal Code",
+						"type": "String"
+					},
+					{
+						"name": "Planned GI Date",
+						"type": "String"
+					},
+					{
+						"name": "Actual Delivery Date",
+						"type": "String"
+					},
+					{
+						"name": "Shpt Haulier Name",
+						"type": "String"
+					},
+					{
+						"name": "Del Block",
+						"type": "String"
+					},
+					{
 						"name": "Delivery Change Code",
+						"type": "String"
+					},
+					{
+						"name": "Delv Time Window",
 						"type": "String"
 					},
 					{

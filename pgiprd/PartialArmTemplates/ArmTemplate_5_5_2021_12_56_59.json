@@ -1,0 +1,65 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "pgiprd"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/delivery_status')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "pgi_process",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Sheet1",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "status.XLSX",
+						"container": "status"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "Delv Time Window",
+						"type": "String"
+					},
+					{
+						"name": "Delivery Nbr",
+						"type": "String"
+					},
+					{
+						"name": "Delv Item",
+						"type": "String"
+					},
+					{
+						"name": "Goods Mvmnt Status",
+						"type": "String"
+					},
+					{
+						"name": "Delivery Change Code",
+						"type": "String"
+					},
+					{
+						"name": "Original Date",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		}
+	]
+}

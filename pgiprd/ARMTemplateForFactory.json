@@ -618,6 +618,57 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/delivery_status')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "pgi_process",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Sheet1",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "status.XLSX",
+						"container": "status"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "Delv Time Window",
+						"type": "String"
+					},
+					{
+						"name": "Delivery Nbr",
+						"type": "String"
+					},
+					{
+						"name": "Delv Item",
+						"type": "String"
+					},
+					{
+						"name": "Goods Mvmnt Status",
+						"type": "String"
+					},
+					{
+						"name": "Delivery Change Code",
+						"type": "String"
+					},
+					{
+						"name": "Original Date",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/pgi_process')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/prediction')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",

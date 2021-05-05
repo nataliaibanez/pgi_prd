@@ -704,33 +704,109 @@
 				"type": "AzureSqlTable",
 				"schema": [
 					{
-						"name": "Delv Time Window",
+						"name": "sales_order",
 						"type": "varchar"
 					},
 					{
-						"name": "delivery_num",
+						"name": "delivery",
 						"type": "varchar"
 					},
 					{
-						"name": "Delv Item",
+						"name": "delivery_item",
 						"type": "varchar"
 					},
 					{
-						"name": "Status",
+						"name": "shipment",
 						"type": "varchar"
 					},
 					{
-						"name": "Code",
+						"name": "material",
 						"type": "varchar"
 					},
 					{
-						"name": "Original Date",
+						"name": "delvery_batch",
+						"type": "varchar"
+					},
+					{
+						"name": "actual_gi_date",
+						"type": "varchar"
+					},
+					{
+						"name": "plant",
+						"type": "varchar"
+					},
+					{
+						"name": "status",
+						"type": "varchar"
+					},
+					{
+						"name": "actual_qty",
+						"type": "varchar"
+					},
+					{
+						"name": "order_qty",
+						"type": "varchar"
+					},
+					{
+						"name": "delivery_date",
+						"type": "varchar"
+					},
+					{
+						"name": "shipping_condition",
+						"type": "varchar"
+					},
+					{
+						"name": "delvery_type",
+						"type": "varchar"
+					},
+					{
+						"name": "delivery_ship_to",
+						"type": "varchar"
+					},
+					{
+						"name": "delivery_ship_to_name",
+						"type": "varchar"
+					},
+					{
+						"name": "delivery_ship_to_country",
+						"type": "varchar"
+					},
+					{
+						"name": "delivery_ship_to_postal_code",
+						"type": "varchar"
+					},
+					{
+						"name": "planned_gi_date",
+						"type": "varchar"
+					},
+					{
+						"name": "actual_delivery_date",
+						"type": "varchar"
+					},
+					{
+						"name": "haulier_name",
+						"type": "varchar"
+					},
+					{
+						"name": "delivery_block",
+						"type": "varchar"
+					},
+					{
+						"name": "delivery_change_code",
+						"type": "varchar"
+					},
+					{
+						"name": "delivery_window",
+						"type": "varchar"
+					},
+					{
+						"name": "original_date",
 						"type": "varchar"
 					}
 				],
 				"typeProperties": {
 					"schema": "dbo",
-					"table": "delivery_status2"
+					"table": "delivery_status3"
 				}
 			},
 			"dependsOn": [
